@@ -16,7 +16,7 @@ btc-converter -C <currency> -A <amount>
 
 ## Contributions
 
-Please read [CONTRIBUTING.md] (https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct.
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct.
 
 ## Versionamento
 
