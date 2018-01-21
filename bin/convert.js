@@ -1,6 +1,12 @@
 'use strict';
 
 var chalk = require('chalk');
+var ora = require('ora');
+
+var spinner = ora({
+  text: 'Retrieving Bitcoin data...',
+  color: 'yellow'
+});
 
 var request = require('request');
 //https://apiv2.bitcoinaverage.com/convert/global?from=BTC&to=USD&amount=2
@@ -9,9 +15,11 @@ function convert() {
   var amount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
   var url = 'https://apiv2.bitcoinaverage.com/convert/global?from=BTC&to=' + currency + '&amount=' + amount;
+  spinner.start();
 
   request(url, function (err, response, body) {
     var apiResponse = void 0;
+    spinner.stop();
     try {
       apiResponse = JSON.parse(body);
     } catch (parseError) {
