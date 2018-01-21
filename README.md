@@ -4,20 +4,22 @@ This CLI converts Bitcoin into any currency you want.
 
 ## How to use
 
+### Build manualy
+
 ```sh
 npm run build && npm link
+```
+
+### Download NPM
+
+```sh
+npm install -g js-btc-converter
 ```
 
 Then it will be available by the command of **btc-converter**
 
 ```sh
 btc-converter -C <currency> -A <amount>
-```
-
-## NPM
-
-```sh
-npm install -g js-btc-converter
 ```
 
 ## Authors
