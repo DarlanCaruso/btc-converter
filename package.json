@@ -1,5 +1,5 @@
 {
-  "name": "btc-converter",
+  "name": "js-btc-converter",
   "version": "1.0.0",
   "description": "A CLI to convert BitCoin to any currency you like.",
   "main": "bin/index.js",
