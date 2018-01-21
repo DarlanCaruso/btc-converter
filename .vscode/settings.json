@@ -1,0 +1,32 @@
+{
+  //-------- Mocha options --------
+  // Mocha: Options to run Mocha
+  "mocha.options": {},
+  // Mocha: Glob to search for test files
+  "mocha.files.glob": "tests/**/*.spec.js",
+  // Mocha: Globs to ignore when searching for test files
+  "mocha.files.ignore": [
+    "**/.git/**/*",
+    "**/node_modules/**/*"
+  ],
+  //Mocha: run tests on each save
+  "mocha.runTestsOnSave": {
+    "default": "true",
+  },
+  // Mocha: Environment variables to run your tests
+  "mocha.env": {},
+  // Mocha: Options to pass to node executable
+  "mocha.node_options": [],
+  // Mocha: Subdirectory in the Workspace where run mocha from
+  "mocha.subfolder": "",
+  // Mocha: List of files to require before running mocha
+  "mocha.requires": [],
+  //Mocha: this option allows you to enable/disable lens decorations and set update threshold "
+  "mocha.sideBarOptions": {
+    "default": {
+      "lens": true, // -> enable/disable lens
+      "decoration": true, // -> enable/disable decoration
+      "autoUpdateTime": 2000 // -> set timeout between each decorations and lens updates during test writing 
+    }
+  }
+}

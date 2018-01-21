@@ -1,0 +1,14 @@
+{
+    "extends": "airbnb-base",
+    "rules": {
+        "linebreak-style": 0
+    },
+    "overrides": [
+        {
+            "files": [
+                "src/*.js"
+            ],
+            "excludedFiles": "**/*.spec.js"
+        }
+    ]
+}
