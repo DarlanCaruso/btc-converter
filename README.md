@@ -14,6 +14,12 @@ Then it will be available by the command of **btc-converter**
 btc-converter -C <currency> -A <amount>
 ```
 
+## NPM
+
+```sh
+npm install -g js-btc-converter
+```
+
 ## Authors
 
 | ![Darlan Caruso](https://avatars3.githubusercontent.com/u/5831230?s=150&v=4) |
