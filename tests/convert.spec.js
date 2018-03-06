@@ -18,63 +18,52 @@ describe('Convert Function', () => {
   };
 
   beforeEach(() => {
-    consoleStub = sinon.stub(console, 'log');
+    consoleStub = sinon.stub(console, 'info');
   });
 
   afterEach(() => {
-    console.log.restore();
+    consoleStub.restore();
   });
 
-  it('should return the correct value', (done) => {
+  it('should return the correct value', async () => {
     //https://apiv2.bitcoinaverage.com/convert/global?from=BTC&to=USD&amount=1
     nock('https://apiv2.bitcoinaverage.com')
       .get('/convert/global')
       .query({ from: 'BTC', to: 'USD', amount: 1 })
       .reply(200, response);
 
-    convert();
-    setTimeout(() => {
-      expect(consoleStub).to.have.been.calledWith(`${chalk.red(1)} BTC to ${chalk.cyan('USD')} = ${chalk.green(response.price)}`);
-      done();
-    }, 300);
+    await convert();
+    expect(consoleStub).to.have.been.calledWith(`${chalk.red(1)} BTC to ${chalk.cyan('USD')} = ${chalk.green(response.price)}`);
   });
 
-  it('should return the correct value passed currency parameter', (done) => {
+  it('should return the correct value passed currency parameter', async () => {
     nock('https://apiv2.bitcoinaverage.com')
       .get('/convert/global')
       .query({ from: 'BTC', to: 'BRL', amount: 1 })
       .reply(200, response);
 
-    convert('BRL');
-    setTimeout(() => {
-      expect(consoleStub).to.have.been.calledWith(`${chalk.red(1)} BTC to ${chalk.cyan('BRL')} = ${chalk.green(response.price)}`);
-      done();
-    }, 300);
+    await convert('BRL');
+    expect(consoleStub).to.have.been.calledWith(`${chalk.red(1)} BTC to ${chalk.cyan('BRL')} = ${chalk.green(response.price)}`);
+
   });
 
-  it('should return the correct value passed currency and amount parameter', (done) => {
+  it('should return the correct value passed currency and amount parameter', async () => {
     nock('https://apiv2.bitcoinaverage.com')
       .get('/convert/global')
       .query({ from: 'BTC', to: 'BRL', amount: 2 })
       .reply(200, response);
 
-    convert('BRL', 2);
-    setTimeout(() => {
-      expect(consoleStub).to.have.been.calledWith(`${chalk.red(2)} BTC to ${chalk.cyan('BRL')} = ${chalk.green(response.price)}`);
-      done();
-    }, 300);
+    await convert('BRL', 2);
+    expect(consoleStub).to.have.been.calledWith(`${chalk.red(2)} BTC to ${chalk.cyan('BRL')} = ${chalk.green(response.price)}`);
   });
 
-  it('should return the correct message if have a error', (done) => {
+  it('should return the correct message if have a error', async () => {
     nock('https://apiv2.bitcoinaverage.com')
       .get('/convert/global')
       .query({ from: 'BTC', to: 'BRL', amount: 2 })
       .replyWithError('Error');
 
-    convert('BRL', 2);
-    setTimeout(() => {
-      expect(consoleStub).to.have.been.calledWith(chalk.red(`Something went wrong in the API. Try in a few minutes.`));
-      done();
-    }, 300);
+    await convert('BRL', 2);
+    expect(consoleStub).to.have.been.calledWith(chalk.red(`Something went wrong in the API. Try again in a few minutes.`));
   });
 });
